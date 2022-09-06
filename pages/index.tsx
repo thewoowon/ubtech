@@ -24,7 +24,7 @@ const Home: NextPage<Props> = ({posts}:Props) => {
             {
               posts.map((post,i) => (
               <div key={post.slug}>
-                <div className="flex">
+                <div className="flex pb-6">
                   <div className="w-9/12 pr-4">
                     <div className="flex justify-start items-center mb-2">
                       {
