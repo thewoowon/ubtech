@@ -78,7 +78,7 @@
 }
 
 .culture{
-    height: 600px;
+    height: 680px;
     width: 100%;
     position: relative;
 }
@@ -117,23 +117,16 @@ video{
 } */
 .section-1{
     background-color: white;
-    width: 100%;
     height: 800px !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 .section-2{
     background-color: white;
-    height: 600px !important;
 }
 .section-3{
     background-color: white;
-    height: 1000px !important;
 }
 .section-4{
-    background-color: white;
-    height: 600px !important;
+    background-color: white;    
 }
 .section-5{
     background-color: white;
@@ -141,11 +134,9 @@ video{
 }
 .section-6{
     background-color: white;
-    height: 1000px !important;
 }
 .section-7{
     background-color: white;
-    height: 1000px !important;
 }
 
 .trio-box-1{

@@ -8,6 +8,16 @@ import Image from 'next/image';
 import culture_part_1 from '../public/images/culture_part_1.svg'
 import culture_part_2 from '../public/images/culture_part_2.svg'
 import culture_part_3 from '../public/images/culture_part_3.svg'
+import man_1 from '../public/images/man_1.svg';
+import man_2 from '../public/images/man_2.svg';
+import woman_1 from '../public/images/woman_1.svg';
+import woman_2 from '../public/images/woman_2.svg';
+import woman_3 from '../public/images/woman_3.svg';
+import together_1 from '../public/images/together_1.svg';
+
+
+
+
 
 export const Culture = (): JSX.Element => {
   return (
@@ -30,56 +40,85 @@ export const Culture = (): JSX.Element => {
         </div>
       </section> */}
       <div className="m-auto" style={{width:"1024px"}}>
-        <section className="culture section-1 flex justify-center items-center">
-          <div className='' style={{"paddingBottom":"10rem"}}>
-            <p className="slogan"><span>세상이 꿈꾸던 헬스케어</span></p>
-            <p className="ubf"><span>유비케어가 만들어갑니다.</span></p>
+        <section className="culture section-1">
+          <div style={{"position":"relative","display":"flex","alignItems":"center","height":"100%"}}>
+            <div style={{"position":"relative","width":"40%","height":"100%"}} className="pt-40">
+              <p style={{"fontSize":"50px","fontWeight":"bold","margin":"0"}}>찾았다!!!</p>
+              <p style={{"fontSize":"25px","margin":"0"}}>세상이 꿈꾸던 헬스케어</p>
+              <p style={{"fontSize":"16px","margin":"0","fontFamily":"Noto Sans KR Light"}}>유비케어는 올해 30주년을 맞이했어요.</p>
+              <p style={{"fontSize":"16px","margin":"0","fontFamily":"Noto Sans KR Light"}}>보다 더 나은 헬스케어를 만들기 위해</p>
+              <p style={{"fontSize":"16px","margin":"0","fontFamily":"Noto Sans KR Light"}}>전력으로 달려가고 있습니다.</p>
+            </div>
+            <div style={{"position":"relative","width":"60%","display":"flex"}}>
+              <div className="w-6/12">
+                <Image src={woman_1} ></Image>
+              </div>
+              <div className="w-6/12">
+                <Image src={man_2} ></Image>
+              </div>
+            </div>
           </div>
         </section>
         <section className="culture section-2">
-          <div style={{"position":"relative"}}>
-            <div style={{"position":"absolute","right":"0","width":"65%"}}>
-              <Image src={culture_part_3} ></Image>
+          <div style={{"position":"relative","height":"100%","display":"flex"}}>
+            <div style={{"position":"absolute","top":"50%","left":"50%","transform":"translate(-50%,-50%)","scale":"0.8"}}>
+              <Image src={man_1} ></Image>
             </div>
-            <p style={{"width":"33%"}}>유비케어 개발자는 어떻게 일할까요?</p>
-            <p style={{"width":"33%"}}>유비케어의 개발자는 고객에게 항상 더 나은 서비스를 제공하기 위해 고민합니다.</p>
-            <p style={{"width":"33%"}}>지속적인 소통과 화합의 장, 유비케어를 이끌어 온 원동력이라고 생각합니다. </p>
+            <div className='w-6/12' style={{"zIndex":"2"}}>
+            <p style={{"fontSize":"50px","fontWeight":"bold","margin":"0","textAlign":"start"}}>ALL FOR</p>
+            <p style={{"fontSize":"25px","margin":"0"}}>세상이 꿈꾸던 헬스케어</p>
+            <p style={{"fontSize":"16px","margin":"0","fontFamily":"Noto Sans KR Light"}}>보다 더 나은 헬스케어를 만들기 위해</p>
+            </div>
+            <div className='w-6/12' style={{"zIndex":"2"}}>
+            <p style={{"fontSize":"50px","fontWeight":"bold","margin":"0","textAlign":"end"}}>YOU:Bcare</p>
+            <p style={{"fontSize":"25px","margin":"0","textAlign":"end"}}>세상이 꿈꾸던 헬스케어</p>
+            <p style={{"fontSize":"16px","margin":"0","fontFamily":"Noto Sans KR Light","textAlign":"end"}}>보다 더 나은 헬스케어를 만들기 위해</p>
+            </div>
           </div>
         </section>
         <section className="culture section-3">
-          <div style={{"position":"relative"}}>
-            <div style={{"position":"absolute","left":"0","width":"55%"}}>
-              <Image src={culture_part_1} ></Image>
+        <div style={{"position":"relative","display":"flex","alignItems":"center","height":"100%"}}>
+            <div style={{"position":"relative","width":"60%","display":"flex","height":"100%"}}>
+              <div className="w-12/12">
+                <Image src={woman_2} ></Image>
+              </div>
             </div>
-            <p style={{"width":"43%"}}>유비케어 개발자는 어떻게 일할까요?</p>
-            <p style={{"width":"43%"}}>유비케어의 개발자는 고객에게 항상 더 나은 서비스를 제공하기 위해 고민합니다.</p>
-            <p style={{"width":"43%"}}>지속적인 소통과 화합의 장, 유비케어를 이끌어 온 원동력이라고 생각합니다. </p>
+            <div style={{"position":"relative","width":"40%","height":"100%"}} className="pt-40">
+              <p style={{"fontSize":"50px","fontWeight":"bold","margin":"0"}}>찾았다!!!</p>
+              <p style={{"fontSize":"25px","margin":"0"}}>세상이 꿈꾸던 헬스케어</p>
+              <p style={{"fontSize":"16px","margin":"0","fontFamily":"Noto Sans KR Light"}}>유비케어는 올해 30주년을 맞이했어요.</p>
+              <p style={{"fontSize":"16px","margin":"0","fontFamily":"Noto Sans KR Light"}}>보다 더 나은 헬스케어를 만들기 위해</p>
+              <p style={{"fontSize":"16px","margin":"0","fontFamily":"Noto Sans KR Light"}}>전력으로 달려가고 있습니다.</p>
+            </div>
           </div>
         </section>
         <section className="culture section-4">
-          <div style={{"position":"relative"}}>
-            <div style={{"position":"absolute","right":"0","width":"65%"}}>
-              <Image src={culture_part_2} ></Image>
+        <div style={{"position":"relative","display":"flex","alignItems":"center","height":"100%"}}>
+            <div style={{"position":"relative","width":"40%","height":"100%"}} className="pt-40">
+              <p style={{"fontSize":"50px","fontWeight":"bold","margin":"0"}}>찾았다!!!</p>
+              <p style={{"fontSize":"25px","margin":"0"}}>세상이 꿈꾸던 헬스케어</p>
+              <p style={{"fontSize":"16px","margin":"0","fontFamily":"Noto Sans KR Light"}}>유비케어는 올해 30주년을 맞이했어요.</p>
+              <p style={{"fontSize":"16px","margin":"0","fontFamily":"Noto Sans KR Light"}}>보다 더 나은 헬스케어를 만들기 위해</p>
+              <p style={{"fontSize":"16px","margin":"0","fontFamily":"Noto Sans KR Light"}}>전력으로 달려가고 있습니다.</p>
             </div>
-            <p style={{"width":"33%"}}>유비케어 개발자는 어떻게 일할까요?</p>
-            <p style={{"width":"33%"}}>유비케어의 개발자는 고객에게 항상 더 나은 서비스를 제공하기 위해 고민합니다.</p>
-            <p style={{"width":"33%"}}>지속적인 소통과 화합의 장, 유비케어를 이끌어 온 원동력이라고 생각합니다. </p>
+            <div style={{"position":"relative","width":"60%","display":"flex","height":"100%","justifyContent":"flex-end","scale":"0.8"}}>
+              <div>
+                <Image src={woman_3} ></Image>
+              </div>
+            </div>
           </div>
         </section>
         <section className="culture section-5">
-            <p className="center-title text-position-1">도전</p>
-            <p className='size-p'><span>도전을 장려하는 문화</span></p>
-            <p className='size-p'><span>함께하는 동료들</span></p>
-        </section>
-        <section className="culture  section-6">
-            <p className="center-title text-position-2">변화</p>
-            <p className='size-p'><span>변화,</span></p>
-            <p className='size-p'><span>보다 나은 미래를 위해</span></p>
-        </section>
-        <section className="culture section-7">
-            <p className="center-title text-position-3">상호존중</p>
-            <p className='size-p'><span>함께함의 의미</span></p>
-            <p className='size-p'><span>그 이상의 가치</span></p>
+          <div style={{"position":"relative","height":"100%","display":"flex","justifyContent":"center"}}>
+              <div style={{"position":"absolute","top":"50%","left":"50%","transform":"translate(-50%,-50%)","scale":"1"}}>
+                <Image src={together_1} ></Image>
+              </div>
+              <div className='pt-20'>
+                <p style={{"fontSize":"50px","fontWeight":"bold","margin":"0","textAlign":"start"}}>ALL FOR YOU:Bcare</p>
+                <p style={{"fontSize":"25px","margin":"0","textAlign":"center"}}>세상이 꿈꾸던 헬스케어</p>
+                <p style={{"fontSize":"16px","margin":"0","fontFamily":"Noto Sans KR Light"}}>보다 더 나은 헬스케어를 만들기 위해</p>
+              </div>
+            </div>
         </section>
       </div>
     </Layout>

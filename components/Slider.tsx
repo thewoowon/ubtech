@@ -29,13 +29,13 @@ const Slider = (): JSX.Element => {
           onSwiper={(swiper) => console.log(swiper)}
           className="my-swiper"
           loop={true}
-          height={450}
+          height={500}
           >
           <SwiperSlide className="my-swiper-slide">
-            <Image src={Preview1} alt="Sample1" width={"100%"} height={450} className="carousel-fit" ></Image>
+            <Image src={Preview1} alt="Sample1" width={"100%"} height={500} className="carousel-fit" ></Image>
           </SwiperSlide>
           <SwiperSlide className="my-swiper-slide">
-            <Image src={Preview2} alt="Sample1" width={"100%"} height={450} className="carousel-fit" ></Image>
+            <Image src={Preview2} alt="Sample1" width={"100%"} height={500} className="carousel-fit" ></Image>
           </SwiperSlide>
         </Swiper>
   );

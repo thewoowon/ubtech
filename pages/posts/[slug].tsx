@@ -81,7 +81,7 @@ const PostPage = ({ source, frontMatter }: Props):JSX.Element => {
                         </p>
                     </div>
                 </div>
-                <article className="max-w-4xl px-8 py-4 mx-auto">
+                <article className="max-w-5xl px-8 py-4 mx-auto">
                     <div className="prose prose-green">
                         <MDXRemote components={components} {...source} />
                         <div className="user-wrap flex items-center">

@@ -1,6 +1,7 @@
 .my-swiper{
     width: 100%;
-    height:450px;
+    height:500px;
+    max-width: 1920px;
 }
 
 .my-swiper-slide{
