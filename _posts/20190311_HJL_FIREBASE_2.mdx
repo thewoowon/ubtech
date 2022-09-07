@@ -11,43 +11,43 @@ date: '2019-03-11'
 
 
 2탄으로 돌아왔습니다.
-
+<p align="center">
 <img src={`/20190304_HJL_FIREBASE_2/001.png`} alt="001"/>
-
+</p>
 오늘은 제가 운영 중인 앱의 **버전 체크 및 업데이트 기능**을 Fireabse Realtime database를 이용하여 구현한 사례를 공유합니다.
 
 <br/>
 
-### 1. [Google Firebase Console](https://console.firebase.google.com/)에 프로젝트를 생성합니다.
-
+<h1>1. <span><a href="https://console.firebase.google.com/" className="a-custom">Google Firebase Console</a></span>에 프로젝트를 생성합니다.</h1>
+<p align="center">
 <img src={`/20190304_HJL_FIREBASE_2/002.png`} alt="002"/>
-
+</p>
 <br/>
 
-### 2. 개발 > Database를 선택하고 Realtime Database를 만듭니다.
+# 2. 개발 > Database를 선택하고 Realtime Database를 만듭니다.
 
 데이터베이스보다 한 단계 진화된 Firestore를 써보고 싶지만 다음에 하기로 합니다.
-
+<p align="center">
 <img src={`/20190304_HJL_FIREBASE_2/003.png`} alt="003"/>
-
+</p>
 <br/>
 
-### 3. 데이터베이스 보안 규칙을 생성합니다. 읽고 쓰는 것에 대한 거부를 설정할 수 있습니다.
-
+# 3. 데이터베이스 보안 규칙을 생성합니다. 읽고 쓰는 것에 대한 거부를 설정할 수 있습니다.
+<p align="center">
 <img src={`/20190304_HJL_FIREBASE_2/004.png`} alt="004"/>
-
+</p>
 <br/>
 
-### 4. 새 데이터베이스가 만들어졌습니다.
+# 4. 새 데이터베이스가 만들어졌습니다.
 
 참고로 파이어베이스는 NoSQL 기반입니다.
 관계형이 아니기 때문에 데이터를 적절히 구조화해 줄 필요가 있습니다.
-
+<p align="center">
 <img src={`/20190304_HJL_FIREBASE_2/005.png`} alt="005"/>
-
+</p>
 <br/>
 
-### 5. 데이터베이스에 들어갈 데이터를 작성합니다.
+# 5. 데이터베이스에 들어갈 데이터를 작성합니다.
 
 파이어베이스는 데이터를 JSON형태로 저장합니다.
 앱에서 사용할 데이터도 JSON형태로 작성합니다. 실서버 기준으로 “version”을 만들었고, 테스트 용도로 “versionTest”를 만들었습니다. 내부 데이터는 동일합니다.
@@ -129,64 +129,64 @@ date: '2019-03-11'
 서비스를 운영하다보면 클라이언트를 강제적으로 업데이트해야 하는 상황이 생깁니다.
 최신 서버 API에 호환되지 않거나 오동작하는 앱의 버전일 경우
 강제 업데이트를 유도하도록 합니다.
-
+<p align="center">
 <img src={`/20190304_HJL_FIREBASE_2/006.png`} alt="006"/>
-
+</p>
 <br/>
 
-### 6. 작성된 데이터를 JSON파일로 만들고 데이터베이스에 Import시킵니다.
-
+# 6. 작성된 데이터를 JSON파일로 만들고 데이터베이스에 Import시킵니다.
+<p align="center">
 <img src={`/20190304_HJL_FIREBASE_2/007.png`} alt="007"/>
-
+</p>
 <br/>
 
-### 7. JSON으로 작성한 데이터가 데이터베이스에 잘 들어갔습니다 👍
-
+# 7. JSON으로 작성한 데이터가 데이터베이스에 잘 들어갔습니다 👍
+<p align="center">
 <img src={`/20190304_HJL_FIREBASE_2/008.png`} alt="008"/>
-
+</p>
 <br/>
 
-### 8. 데이터베이스의 구성이 완료되었습니다! 이제 애플리케이션을 개발할 차례입니다.
+# 8. 데이터베이스의 구성이 완료되었습니다! 이제 애플리케이션을 개발할 차례입니다.
 
 Firebase 콘솔에서 “google-service.json” 파일을 내려 받아 앱 프로젝트에 추가합니다.
-
+<p align="center">
 <img src={`/20190304_HJL_FIREBASE_2/009.png`} alt="009"/>
-
+</p>
 <br/>
 
-### 9. 안드로이드 프로젝트의 build.gradle에 dependices를 추가합니다.
+# 9. 안드로이드 프로젝트의 build.gradle에 dependices를 추가합니다.
 
 구글 파이어베이스-리얼타임데이터베이스 라이브러리를 이용한다고 보시면 됩니다.
 
 ```js
-    implementation  'com.google.firebase:firebase-core:16.0.4'  
-    implementation  'com.google.firebase:firebase-database:16.0.4'
+implementation  'com.google.firebase:firebase-core:16.0.4'  
+implementation  'com.google.firebase:firebase-database:16.0.4'
 ```
 
 <br/>
 
-### 10. 앱 프로젝트의 환경 구성은 끝났습니다.
+# 10. 앱 프로젝트의 환경 구성은 끝났습니다.
 
 이제 소스코드를 적절히 작성하면 됩니다. 파이어베이스에 코딩 가이드가 자세히 나와 있으니 참고하여 개발하시면 됩니다. 제 기억에 십여분 만에 코딩 초안을 완성했던 것 같네요. 따봉쓰 👍👍👍
 
 <br/>
 
-### 11. Test
+# 11. Test
 
 앱까지 개발이 완료되었으므로 이제 테스트해 볼 시간입니다.
 Firebase Console에서 Database의 값을 변경합니다.
 versionTest.latestVersionCode 값을 한 단계 높여 봅니다.
 
-
+<p align="center">
 <img src={`/20190304_HJL_FIREBASE_2/010.png`} alt="010"/>
-
+</p>
 <br/>
 
-### 12. 켜 두었던 앱에서 업데이트 팝업이 노출되었습니다!!
+# 12. 켜 두었던 앱에서 업데이트 팝업이 노출되었습니다!!
 
-
+<p align="center">
 <img src={`/20190304_HJL_FIREBASE_2/011.png`} alt="011"/>
-
+</p>
 신이가 납니다!!
 업데이트 버튼을 누르면 구글 플레이로 이동하도록 구현되어 있습니다. 구글 플레이에서 새 버전의 앱을 받으면 모든 시나리오가 완성됩니다!
 
@@ -225,8 +225,8 @@ Storage, Hosting, Function만 잘 이용해도 만들 수 있습니다.
 ## 추가, 로드 존슨님 트윗과 댓글ㅋ 😂😂😂😂
 
 [How can serverless have server errors?](https://twitter.com/springrod/status/1101705351001399296)
-
+<p align="center">
 <img src={`/20190304_HJL_FIREBASE_2/012.png`} alt="012"/>
-
+</p>
 
 
