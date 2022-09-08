@@ -336,3 +336,11 @@ iframe{
     margin-right: 4px;
     vertical-align: 2px;
 }
+
+
+@supports (position: sticky) or (position: -webkit-sticky) {
+    ._sticky {
+        position: sticky;
+        top: 100px;
+    }
+  }

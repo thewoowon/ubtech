@@ -32,12 +32,12 @@ const Layout = ({ children, customMeta }: LayoutProps): JSX.Element => {
         </div>
       </header>
       <main style={{paddingTop:"60px"}}>
-        <div style={{"overflow":"hidden"}} className="relative">{children}</div>
+        <div className="relative">{children}</div>
       </main>
       <footer className="py-8 h-96" style={{borderTop:"1px solid rgba(230,230,230,0.5)",backgroundColor:"#f9fafb"}}>
         <div className="m-auto w-2/5 h-full">
           <div className="h-1/4 flex items-center justify-center">
-          <Link href={"https://www.ubcare.co.kr/"}>
+          <Link href={"/"}>
             <a style={{fontSize:"28px",fontWeight:"bold",color:"#ff7f00",lineHeight:"28px",textAlign:"center",fontFamily:"Noto_Sans"}}>
                 <span className="ubcare-blog-title">유비케어</span> 
                 <span style={{fontSize:"20px",fontWeight:"bold",lineHeight:"18px",fontFamily:"Noto_Sans",color:"#3B3838"}}> 기술 블로그</span>
@@ -45,9 +45,21 @@ const Layout = ({ children, customMeta }: LayoutProps): JSX.Element => {
           </Link>
           </div>
           <div className="h-2/4 flex items-center justify-center">
-            <Image src={"/assets/gc_care.png"} width={100} height={50}></Image>
-            <Image src={"/assets/bbros.png"} width={200} height={100}></Image>
-            <Image src={"/assets/hecton.png"} width={100} height={50}></Image>
+            <Link href={"https://www.gccare.net/"}>
+              <a target="_blank">
+              <Image src={"/assets/gc_care.png"} width={100} height={50}></Image>
+              </a>
+            </Link>
+            <Link href={"https://bbros.co.kr/"}>
+              <a target="_blank">
+              <Image src={"/assets/bbros.png"} width={200} height={100}></Image>
+              </a>
+            </Link>
+            <Link href={"https://hectonproject.com/"}>
+              <a target="_blank">
+              <Image src={"/assets/hecton.png"} width={100} height={50}></Image>
+              </a>
+            </Link>
           </div>
           <div className="h-1/4 border-t-2 flex justify-center items-center">
             <p className="text-black text-center text-xs" style={{color:"rgba(200,200,200,1)",fontFamily:"Noto_Sans"}}>UBcare. ALL RIGHTS RESERVED. POWERED BY VERCEL</p>

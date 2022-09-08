@@ -10,7 +10,7 @@ const Head = ({ customMeta }: { customMeta?: MetaProps }): JSX.Element => {
   const meta: MetaProps = {
     title: '유비케어 기술 블로그, 유비테크',
     description:
-      'Value creation for sustainable life',
+      '세상이 꿈꾸던 헬스케어',
     image: `${WEBSITE_HOST_URL}/images/ubTech_Blog_Preview.png`,
     type: 'Blog',
     ...customMeta,

@@ -1,23 +1,13 @@
 import React from 'react';
 import Layout from '../components/Layout';
-import CultureComponent from '../components/Culture';
-import Video from '../components/Video';
-import Card from '../components/Card';
 import Image from 'next/image';
 //import main from '../public/videos/main_video.mov'
-import culture_part_1 from '../public/images/culture_part_1.svg'
-import culture_part_2 from '../public/images/culture_part_2.svg'
-import culture_part_3 from '../public/images/culture_part_3.svg'
 import man_1 from '../public/images/man_1.svg';
 import man_2 from '../public/images/man_2.svg';
 import woman_1 from '../public/images/woman_1.svg';
 import woman_2 from '../public/images/woman_2.svg';
 import woman_3 from '../public/images/woman_3.svg';
 import together_1 from '../public/images/together_1.svg';
-
-
-
-
 
 export const Culture = (): JSX.Element => {
   return (

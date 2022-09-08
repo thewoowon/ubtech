@@ -1,6 +1,6 @@
 import { serialize } from 'next-mdx-remote/serialize';
 import { GetStaticProps, GetStaticPaths } from 'next';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { useMdxComponentsContext } from '../../context/mdxContext';
 import { IPost } from '../../types/post';
@@ -41,6 +41,10 @@ const components = {
 }
 
 const PostPage = ({ source, frontMatter }: Props):JSX.Element => {
+    const [name ,setName] = useState('');
+    const [position,setPosition] = useState('');
+    const [division,setDivision] = useState('');
+    const [comment,setComment] = useState('');
     useEffect(() => {
         Prism.highlightAll();
     }, []);
@@ -52,6 +56,13 @@ const PostPage = ({ source, frontMatter }: Props):JSX.Element => {
         setPrerequisites(frontMatter.prerequisites);
         // set stacks
         setStacks(frontMatter.stacks);
+
+        frontMatter.prerequisites.map((value,iter)=>{
+            if(iter == 0) setName(value);
+            else if(iter == 1) setPosition(value);
+            else if(iter == 2) setDivision(value);
+            else if(iter == 3) setComment(value);
+        })
     }, [
         setPrerequisites,
         setStacks,
@@ -89,11 +100,14 @@ const PostPage = ({ source, frontMatter }: Props):JSX.Element => {
                                 <Image src={techLogo} alt="logo" width={150} height={150} style={{borderRadius:"50%",objectFit:"fill"}}></Image>
                             </div>
                             <div className="w-8/12 h-full"> 
-                                <div className="h-3/6 flex items-center pl-5 pr-12" style={{"fontFamily":"Noto_Sans"}}>
-                                    <h4>{frontMatter.writer} / 매니저 </h4>
+                                <div className="flex items-center pl-5 pr-12" style={{"fontFamily":"Noto_Sans","height":"50%"}}>
+                                    <div className='pt-5'>
+                                        <h4 style={{"marginBottom":"0"}}> {frontMatter.writer} / {division}</h4>
+                                        <p className='m-0 text-xs'>{position}</p>
+                                    </div>
                                 </div>
-                                <div className="h-3/6 flex items-start pl-5 pr-12" style={{"fontFamily":"Noto_Sans"}}>
-                                    안녕하세요. {frontMatter.writer} 매니저입니다.
+                                <div className="flex items-start pl-5 pr-12" style={{"fontFamily":"Noto_Sans","height":"50%"}}>
+                                    {comment}
                                 </div>
                             </div>
                         </div>
