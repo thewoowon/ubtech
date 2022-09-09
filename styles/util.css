@@ -83,7 +83,7 @@
 
 
 .prose *{
-    font-family: "Noto_Sans";
+    font-family: "Noto Sans KR";
 }
 
 .culture{
@@ -354,6 +354,6 @@ iframe{
     }
 }
 
-.prose-green p{
+.prose-green p, li{
     font-family: 'Noto Sans KR Light';
 }

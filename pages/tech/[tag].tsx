@@ -18,12 +18,17 @@ const Tech: NextPage<Props> = ({posts}:Props) => {
   const { tag } = router.query
   const [postsByTag, setPostsByTag] = useState<IPost[]>([]);
   useEffect(()=>{
-    setPostsByTag([]);
-    for (let index = 0; index < posts.length; index++) {
-      const element = posts[index].stacks;
-      if(element.find((value) => value === tag)){
-        setPostsByTag((prev) => [...prev, posts[index]]);
-        //postsByTag.push(posts[index]);
+    if(tag === 'all')
+      setPostsByTag(posts)
+    else
+    {
+      setPostsByTag([]);
+      for (let index = 0; index < posts.length; index++) {
+        const element = posts[index].stacks;
+        if(element.find((value) => value === tag)){
+          setPostsByTag((prev) => [...prev, posts[index]]);
+          //postsByTag.push(posts[index]);
+        }
       }
     }
   },[])    
@@ -45,7 +50,7 @@ const Tech: NextPage<Props> = ({posts}:Props) => {
                       {
                           post.stacks.map((value,iter) =>{
                               return(
-                                  <button className="tag-button" key={iter}>{value}</button>
+                                <button className="tag-button" key={iter} onClick={() => router.push(`/tech/${value}`)}>{value}</button>
                               )
                           })
                       }
