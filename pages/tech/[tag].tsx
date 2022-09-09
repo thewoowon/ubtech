@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '../../components/Layout';
 import Thumbnail from '../../components/Thumbnail';
 import { IPost } from '../../types/post';
@@ -16,16 +16,17 @@ type Props = {
 const Tech: NextPage<Props> = ({posts}:Props) => {
   const router = useRouter()
   const { tag } = router.query
-  const [postsByTag, setPostsByTag] = React.useState<IPost[]>([]);
-
+  const [postsByTag, setPostsByTag] = useState<IPost[]>([]);
   useEffect(()=>{
+    setPostsByTag([]);
     for (let index = 0; index < posts.length; index++) {
       const element = posts[index].stacks;
       if(element.find((value) => value === tag)){
-        setPostsByTag([...postsByTag, posts[index]]);
+        setPostsByTag((prev) => [...prev, posts[index]]);
+        //postsByTag.push(posts[index]);
       }
     }
-  },[])
+  },[])    
 
   return (
     <Layout
