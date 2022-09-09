@@ -147,15 +147,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 export const getStaticPaths: GetStaticPaths = () => {
     //only get the slug from posts 
-    const posts = getAllPosts(['slug']);
-
+    const posts = getAllPosts(['slug','stacks']);
+    
     // map through to return post paths
     const paths = posts.map((post) => ({
         params: {
             slug: post.slug
         }
     }));
-
     return {
         paths,
         fallback: false

@@ -63,6 +63,11 @@ export function getPostItems(filePath:string,fields:string[] = []): Items{
         if(field === 'content'){
             items[field] = content;
         }
+        if(field === 'tag'){
+            const tags = data['stacks'];
+            const concatTags = tags.split(',');
+            items[field] = data.stacks;
+        }
         // check if the above specified field exists on data
         if(data[field]){
             // verify the fileds has data

@@ -10,7 +10,7 @@ type LayoutProps = {
   customMeta?: MetaProps;
 };
 
-export const WEBSITE_HOST_URL = 'https://ubcare.vercel.app';
+export const WEBSITE_HOST_URL = 'https://ub-tech.vercel.app';
 
 const Layout = ({ children, customMeta }: LayoutProps): JSX.Element => {
   return (
@@ -22,7 +22,7 @@ const Layout = ({ children, customMeta }: LayoutProps): JSX.Element => {
             <Link href={"/"}>
               <a style={{fontSize:"24px",fontWeight:"bold",color:"#ff7f00",lineHeight:"28px",fontFamily:"Noto_Sans"}}>
                 <span className="ubcare-blog-title">유비케어</span> 
-                <span style={{fontSize:"18px",fontWeight:"bold",lineHeight:"18px",fontFamily:"Noto_Sans", color:"#3B3838"}}> 기술 블로그</span>
+                <span style={{fontSize:"18px",fontWeight:"bold",lineHeight:"18px",fontFamily:"Noto_Sans", color:"#3B3838"}}> 기술블로그</span>
               </a>
             </Link>
           </div>

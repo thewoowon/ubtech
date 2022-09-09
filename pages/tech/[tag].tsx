@@ -1,10 +1,11 @@
-import React from 'react';
-import Layout from '../components/Layout';
-import Thumbnail from '../components/Thumbnail';
-import { IPost } from '../types/post';
+import React, { useEffect } from 'react';
+import Layout from '../../components/Layout';
+import Thumbnail from '../../components/Thumbnail';
+import { IPost } from '../../types/post';
 import Link from 'next/link';
-import { GetStaticProps, NextPage } from 'next';
-import { getAllPosts } from '../utils/mdxUtils';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import { getAllPosts } from '../../utils/mdxUtils';
+import { useRouter } from 'next/router';
 
 
 type Props = {
@@ -13,6 +14,19 @@ type Props = {
 
 
 const Tech: NextPage<Props> = ({posts}:Props) => {
+  const router = useRouter()
+  const { tag } = router.query
+  const [postsByTag, setPostsByTag] = React.useState<IPost[]>([]);
+
+  useEffect(()=>{
+    for (let index = 0; index < posts.length; index++) {
+      const element = posts[index].stacks;
+      if(element.find((value) => value === tag)){
+        setPostsByTag([...postsByTag, posts[index]]);
+      }
+    }
+  },[])
+
   return (
     <Layout
       customMeta={{
@@ -22,7 +36,7 @@ const Tech: NextPage<Props> = ({posts}:Props) => {
       <div className="m-auto flex" style={{width:"1024px"}}>
           <div className="space-y-12 m-auto mt-12 mb-12 w-8/12">
             {
-              posts.map((post,i) => (
+              postsByTag.map((post,i) => (
               <div key={post.slug}>
                 <div className="flex pb-6">
                   <div className="w-9/12 pr-4">
@@ -36,16 +50,16 @@ const Tech: NextPage<Props> = ({posts}:Props) => {
                       }
                     </div>
                     <div className="flex">
-                      <h2 className="text-4xl font-bold m-0 text-gray-800" style={{"fontFamily":"Noto_Sans"}}>
+                      <h2 className="text-4xl font-bold m-0 text-gray-800" style={{"fontFamily":"Noto Sans KR"}}>
                         <Link href={`/posts/${post.slug}`}><a>{post.title}</a></Link>
                       </h2>
                     </div>
-                    <div className="flex" style={{"fontFamily":"Noto_Sans"}}>
+                    <div className="flex" style={{"fontFamily":"Noto Sans KR"}}>
                       <p>{post.description}</p>
                     </div>
                     <div className="flex items-center">
-                      <div className="text-sm mr-2" style={{"fontWeight":"bold","fontFamily":"Noto_Sans"}}>{post.date}</div>
-                      <div className="text-sm" style={{"fontFamily":"Noto_Sans"}}>- {post.writer}</div>
+                      <div className="text-sm mr-2" style={{"fontFamily":"Noto Sans KR"}}>{post.date}</div>
+                      <div className="text-sm" style={{"fontFamily":"Noto Sans KR"}}>- {post.writer}</div>
                     </div>
                   </div>
                   <div className="w-3/12 pt-6">
@@ -85,8 +99,27 @@ export const getStaticProps: GetStaticProps = async () => {
     'stacks',
     'thumbnail',
     'writer',
+    'name'
   ]);
-
-  // retunr the posts props
+  // return the posts props
   return { props: { posts } }
+}
+
+export const getStaticPaths: GetStaticPaths = () => {
+  const posts = getAllPosts(['stacks']);
+
+  const paths = 
+    posts.map((post) => {
+    const test = post.stacks;
+    for (let index = 0; index < test.length; index++) {
+        const element = test[index];
+        return {params: {tag: element}}
+    }
+  });
+  paths.push({params: {tag: 'all'}})
+
+  return {
+      paths:paths,
+      fallback: false
+  }
 }

@@ -38,12 +38,21 @@
     margin-bottom: 5px;
     border-bottom: 1px solid #efefef;
     font-size: 15px;
-    font-family: 'Noto_Sans';
+    font-family: 'Noto Sans KR Light';
 }
-
-
 .latest-list li a{
     cursor: pointer;
+}
+.latest-list li a:hover{
+    cursor: pointer;
+    color: #ff7f00;
+}
+.tags-list{
+    font-family: 'Noto Sans KR Light';
+}
+.tags-list:hover{
+    cursor: pointer;
+    color: #ff7f00;
 }
 .tag-button{
     height: 35px;
@@ -343,4 +352,8 @@ iframe{
         position: sticky;
         top: 100px;
     }
-  }
+}
+
+.prose-green p{
+    font-family: 'Noto Sans KR Light';
+}

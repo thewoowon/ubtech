@@ -5,19 +5,38 @@ import Thumbnail from '../components/Thumbnail';
 import { IPost } from '../types/post';
 import { getAllPosts } from '../utils/mdxUtils';
 import Link from 'next/link';
-import React from 'react' 
-
+import React, { useEffect, useState } from 'react' 
+import { useRouter } from 'next/router';
 
 type Props = {
   posts:[IPost]
 }
 
+type Tags = { [key: string]: number };
+
 const Home: NextPage<Props> = ({posts}:Props) => {
+
+  const [tags, setTags] = useState<Tags>({});
+  const router = useRouter();
+  useEffect(()=>{
+    const tags = posts.reduce((acc, post) => {
+      post.stacks.forEach((tag) => {
+        if (acc[tag]) {
+          acc[tag] += 1;
+        } else {
+          acc[tag] = 1;
+        }
+      });
+      return acc;
+    }, {} as Tags);
+    setTags(tags);
+  },[])
   return (
     <Layout>
         <div>
           <Slider></Slider>
         </div>
+        <div></div>
         <div className="m-auto flex" style={{width:"1024px"}}>
           <div className="space-y-12 mt-12 mb-12 w-8/12">
             {
@@ -29,22 +48,22 @@ const Home: NextPage<Props> = ({posts}:Props) => {
                       {
                           post.stacks.map((value,iter) =>{ 
                               return(
-                                  <button className="tag-button" key={iter}>{value}</button>
+                                  <button className="tag-button" key={iter} onClick={() => router.push(`/tech/${value}`)}>{value}</button>
                               )
                           })
                       }
                     </div>
                     <div className="flex">
-                      <h2 className="text-4xl font-bold m-0 text-gray-800" style={{"fontFamily":"Noto_Sans"}}>
+                      <h2 className="text-4xl m-0 text-gray-800" style={{"fontFamily":"Noto Sans KR Medium"}}>
                         <Link href={`/posts/${post.slug}`}><a>{post.title}</a></Link>
                       </h2>
                     </div>
-                    <div className="flex" style={{"fontFamily":"Noto_Sans"}}>
+                    <div className="flex" style={{"fontFamily":"Noto Sans KR"}}>
                       <p>{post.description}</p>
                     </div>
                     <div className="flex items-center">
-                      <div className="text-sm mr-2" style={{"fontWeight":"bold","fontFamily":"Noto_Sans"}}>{post.date}</div>
-                        <div className="text-sm" style={{"fontFamily":"Noto_Sans"}}>{post.writer} / { post.prerequisites[2]}
+                      <div className="text-sm mr-2" style={{"fontFamily":"Noto Sans KR"}}>{post.date}</div>
+                        <div className="text-sm" style={{"fontFamily":"Noto Sans KR"}}>{post.writer} / { post.prerequisites[2]}
                       </div>
                     </div>
                   </div>
@@ -71,22 +90,36 @@ const Home: NextPage<Props> = ({posts}:Props) => {
           </div>
           <div className="mt-12 mb-12 w-4/12 latest-wrap" style={{"height":"auto"}}>
             {/* 최근 글 10가지 */}
-            <div className="_sticky">
-              <div className="flex justify-center items-center">
-                <h3>최근 올라온 글</h3>
-              </div>
-              <ul className="latest-list m-auto">
-                <li><Link href={`posts/20190227_JHS_REACTNATIVE`}><a>React Native 사용기 #1</a></Link></li>
-                <li><Link href={`posts/20190228_JSC_SQL`}><a>SQL - Four Part Naming의 함정</a></Link></li>
-                <li><Link href={`posts/20190304_HJL_FIREBASE_1`}><a>실시간 데이터베이스 사용기 (Firebase) 1탄</a></Link></li>
-                <li><Link href={`posts/20190311_HJL_FIREBASE_2`}><a>실시간 데이터베이스 사용기 (Firebase) 2탄</a></Link></li>
-                <li><Link href={`posts/20190415_HYL_DEVTREND`}><a>Dev Trend 2019 by StackOverflow</a></Link></li>
-                <li><Link href={`posts/20190425_KTJ_HELLOANKO_1`}><a>Hello Anko!! - 1탄</a></Link></li>
-                <li><Link href={`posts/20190430_JSC_DEADLOCK`}><a>[SQL SERVER] Lock - 01.DeadLock</a></Link></li> 
-                <li><Link href={`posts/20190503_KTJ_HELLOANKO_2`}><a>Hello Anko!! - 2탄</a></Link></li>
-                <li><Link href={`posts/20190604_HYL_CSSTRANSFORM_1`}><a>CSS Transform 3D - Part1</a></Link></li>
-                <li><Link href={`posts/20190607_YSY_SSMS`}><a>SSMS 소소한 팁!!</a></Link></li>
+            <div className="_sticky pl-2">
+              <p style={{"textAlign":"start"}}>인기 글</p>
+              <ul className="latest-list">
+                {
+                  posts.map((post,i) => {
+                    if(i < 5)
+                    return (
+                      <li key={post.name}><Link href={`posts/${post.name}`}><a>{post.title}</a></Link></li>
+                    )
+                  })
+                }
               </ul>
+              {/* 태그 모음 */}
+              
+              <p style={{"textAlign":"start","marginTop":"50px"}}>태그</p>
+                <div style={{"paddingLeft":"5px"}}>
+                  {
+                    Object.keys(tags).map((tag) =>{
+                      return(
+                        <div key={tag}>
+                          <Link href={'/tech/' + tag}>
+                            <a className='tags-list'>
+                              - {tag + '(' + tags[tag] + ')'}
+                            </a>
+                          </Link>
+                        </div>
+                      )
+                    })
+                  }
+                </div>
             </div>
           </div>
         </div>
@@ -106,8 +139,8 @@ export const getStaticProps: GetStaticProps = async () => {
     'stacks',
     'thumbnail',
     'writer',
+    'name'
   ]);
-
   // retunr the posts props
   return { props: { posts } }
 }
