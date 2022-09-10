@@ -357,3 +357,92 @@ iframe{
 .prose-green p, li{
     font-family: 'Noto Sans KR Light';
 }
+
+.like-content{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.like-content span {
+    color: #9d9da4;
+    font-family: monospace;
+  }
+  .like-content .btn-good {
+      display: block;
+      text-align: center;
+      background: #ed2553;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px -8px rgb(240, 75, 113);
+      padding: 10px 17px;
+      font-size: 15px;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      color: #ffffff;
+      text-decoration: none;
+      -webkit-transition: 0.3s ease;
+      transition: 0.3s ease;
+      margin-right: 10px;
+  }
+  .like-content .btn-good:hover {
+      transform: translateY(-3px);
+  }
+  .like-content .btn-good .fa {
+      margin-right: 5px;
+  }
+  .like-content .btn-gentle {
+    display: block;
+    text-align: center;
+    background: rgb(104, 206, 160);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px -8px rgb(104, 206, 160);
+    padding: 10px 17px;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    text-decoration: none;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+    margin-right: 10px;
+}
+.like-content .btn-gentle:hover {
+    transform: translateY(-3px);
+}
+.like-content .btn-gentle .fa {
+    margin-right: 5px;
+}
+.like-content .btn-learn {
+    display: block;
+    text-align: center;
+    background: rgb(119, 53, 226);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px -8px rgb(119, 53, 226);
+    padding: 10px 17px;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    text-decoration: none;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+    margin-right: 10px;
+}
+.like-content .btn-learn:hover {
+    transform: translateY(-3px);
+}
+.like-content .btn-learn .fa {
+    margin-right: 5px;
+}
+  .animate-like {
+    animation-name: likeAnimation;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-duration: 0.65s;
+  }
+  @keyframes likeAnimation {
+    0%   { transform: scale(30); }
+    100% { transform: scale(1); }
+  }

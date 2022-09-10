@@ -23,6 +23,10 @@ import 'prismjs/components/prism-typescript.min';
 import 'prismjs/components/prism-jsx.min';
 import 'prismjs/components/prism-tsx.min';
 
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import { faPencil } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Image from 'next/image';
 import techLogo from '../../images/logo/face.png';
@@ -45,6 +49,7 @@ const PostPage = ({ source, frontMatter }: Props):JSX.Element => {
     const [position,setPosition] = useState('');
     const [division,setDivision] = useState('');
     const [comment,setComment] = useState('');
+    const [liked,setLiked] = useState(false);
     useEffect(() => {
         Prism.highlightAll();
     }, []);
@@ -70,12 +75,25 @@ const PostPage = ({ source, frontMatter }: Props):JSX.Element => {
         frontMatter.stacks,
     ]);
 
+    const goodEffect = (e:React.MouseEvent<HTMLButtonElement>) =>{
+        //(e.target as Element).innerHTML = '<FontAwesomeIcon icon={faHeart}/>좋아요';
+        (e.target as Element).querySelector('.fa-heart').classList.add('animate-like')
+    }
+    const gentleEffect = (e:React.MouseEvent<HTMLButtonElement>) =>{
+        //(e.target as Element).innerHTML = '<FontAwesomeIcon icon={faHeart}/>좋아요';
+        (e.target as Element).querySelector('.fa-thumbs-up').classList.add('animate-like')
+    }
+    const learnEffect = (e:React.MouseEvent<HTMLButtonElement>) =>{
+        //(e.target as Element).innerHTML = '<FontAwesomeIcon icon={faHeart}/>좋아요';
+        (e.target as Element).querySelector('.fa-pencil').classList.add('animate-like')
+    }
+
     return (
         <React.Fragment>
             <Layout>
-                <div style={{"borderBottom":"2px solid rgba(180,180,180,1)"}}>
-                    <div className="max-w-5xl px-8 py-4 mx-auto">
-                        <div className="flex justify-start items-center mb-2">
+                <div style={{"borderBottom":"1px solid rgba(180,180,180,0.5)"}}>
+                    <div className="max-w-5xl px-8 py-4 mx-auto relative">
+                        <div className="flex justify-start items-center mt-1 mb-0">
                             {
                                 frontMatter.stacks.map((value,iter) =>{
                                     return(
@@ -84,12 +102,23 @@ const PostPage = ({ source, frontMatter }: Props):JSX.Element => {
                                 })
                             }
                         </div>
-                        <h1 className="mb-3 text-gray-600 dark:text-white" style={{fontFamily:"Noto_Sans"}}>
+                        <h1 className="mb-0 mt-0 text-gray-600 dark:text-white" style={{fontFamily:"Noto Sans KR","fontSize":"45px"}}>
                             {frontMatter.title}
                         </h1>
-                        <p className="mb-10 text-sm text-gray-800 dark:text-gray-400" style={{fontFamily:"Noto_Sans"}}>
+                        <p className="mt-0 text-sm text-gray-800 dark:text-gray-400" style={{fontFamily:"Noto Sans KR"}}>
                             {format(parseISO(frontMatter.date), 'MMMM dd, yyyy')} - {frontMatter.writer}
                         </p>
+                        <div className='like-content'>
+                            <button className="btn-good like-review" onClick={goodEffect}>
+                                <FontAwesomeIcon icon={faHeart}/> 좋아요
+                            </button>
+                            <button className="btn-gentle like-review" onClick={gentleEffect}>
+                                <FontAwesomeIcon icon={faThumbsUp}/> 멋져요
+                            </button>
+                            <button className="btn-learn like-review" onClick={learnEffect}>
+                                <FontAwesomeIcon icon={faPencil}/> 배웠어요
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <article className="max-w-5xl px-8 py-4 mx-auto">
@@ -100,13 +129,13 @@ const PostPage = ({ source, frontMatter }: Props):JSX.Element => {
                                 <Image src={techLogo} alt="logo" width={150} height={150} style={{borderRadius:"50%",objectFit:"fill"}}></Image>
                             </div>
                             <div className="w-8/12 h-full"> 
-                                <div className="flex items-center pl-5 pr-12" style={{"fontFamily":"Noto_Sans","height":"50%"}}>
+                                <div className="flex items-center pl-5 pr-12" style={{"fontFamily":"Noto Sans KR","height":"50%"}}>
                                     <div className='pt-5'>
                                         <h4 style={{"marginBottom":"0"}}> {frontMatter.writer} / {division}</h4>
                                         <p className='m-0 text-xs'>{position}</p>
                                     </div>
                                 </div>
-                                <div className="flex items-start pl-5 pr-12" style={{"fontFamily":"Noto_Sans","height":"50%"}}>
+                                <div className="flex items-start pl-5 pr-12" style={{"fontFamily":"Noto Sans KR","height":"50%"}}>
                                     {comment}
                                 </div>
                             </div>
